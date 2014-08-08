@@ -2,6 +2,8 @@
 <html>
 	<head>
 		<title>Share Plugin Demo</title>
+
+		<script type="text/javascript" charset="utf-8" src="js/phonegap.0.9.5.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/share.js"></script>
 		<link rel="stylesheet" type="text/css" href="common.css">
@@ -42,7 +44,8 @@ var ANDROID_PLATFORM = "Android";
 var IOS_PLATFORM = "iPhone";
 
 $(document).ready(function() {
-	var devicePlatform = device.platform;
+	var devicePlatform = "Android";
+	var deviceplatform = "Android";
 	$('#shareBtn').click(function(event) {
 		alert(devicePlatform)
 		event.preventDefault();
@@ -71,7 +74,7 @@ $(document).ready(function() {
 		//var shareSrc = 'http://www.google.com'; // Facebook only allows URLs in plain text sharing
 		//var mimeType = 'text/plain';
 
-		if (device.platform == ANDROID_PLATFORM) {
+		if (deviceplatform == ANDROID_PLATFORM) {
 				$('#shareLoad').css('display', 'block');
 				window.plugins.share.send(shareSrc, mimeType, {success: success, fail: fail, title: 'Share With', subject: 'Share Plugin Demo'});
 				function success(result) {
