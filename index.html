@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Share Plugin Demo</title>
+
+		<script type="text/javascript" charset="utf-8" src="js/phonegap.0.9.5.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/share.js"></script>
+		<link rel="stylesheet" type="text/css" href="common.css">
+	</head>
+
+<body>
+		<a href="#" id="shareBtn">Click to share</a>
+		<br/>
+	<img src="http://www.dineroenimagen.com/media/dinero/styles/gallerie/public/images/2014/07/estudiar-g.jpg?itok=sm1fV9Hr" id="img"/>
+<div id="shareLoad"><p>Loading...</p></div>
+		
+		<script type="text/javascript">
+
+// PhoneGap device.platform naming
+var ANDROID_PLATFORM = "Android";
+var IOS_PLATFORM = "iPhone";
+
+$(document).ready(function() {
+
+	$('#shareBtn').click(function(event) {
+		event.preventDefault();
+
+		// * * * * * *
+		// Server Image Example
+		// * * * * * *
+		var shareSrc = $('#img').attr('src'); // get the absolute server path from the DOM
+		var mimeType = 'image/jpeg';
+		
+		// * * * * * *
+		// Local Image Example
+		// * * * * * *
+		//var shareSrc = '/mnt/sdcard/my_image.jpg';
+		//var mimeType = 'image/jpeg';
+		
+		// * * * * * *
+		// HTML Example
+		// * * * * * *
+		//var shareSrc = '<a href="http://www.google.com">Search the Internet</a>';
+		//var mimeType = 'text/html';
+		
+		// * * * * * *
+		// Plain Text Example
+		// * * * * * *
+		//var shareSrc = 'http://www.google.com'; // Facebook only allows URLs in plain text sharing
+		//var mimeType = 'text/plain';
+
+		if (device.platform == ANDROID_PLATFORM) {
+				$('#shareLoad').css('display', 'block');
+				window.plugins.share.send(shareSrc, mimeType, {success: success, fail: fail, title: 'Share With', subject: 'Share Plugin Demo'});
+				function success(result) {
+					$('#shareLoad').css('display', 'none');
+					if (result.result == 0)
+						alert(result.debug);
+				}
+				function fail(result) {
+					$('#shareLoad').css('display', 'none');
+					alert(result.debug);
+				}
+		} else {
+			// Do something else for iPhone/webOS users
+			// window.location = 'http://www.facebook.com/sharer.php?u=' + escape(shareSrc); // Facebook share URL
+		}
+	});
+
+});
+		</script>
+</body>
+</html>

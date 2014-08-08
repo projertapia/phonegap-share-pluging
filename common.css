@@ -1,0 +1,51 @@
+body,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,p,form,fieldset,legend,input,img {
+	margin:0pt;
+	padding:0pt;
+}
+ul { list-style-type: none; }
+html, body {
+  width:  100%;
+  margin: 0px;
+}
+body {
+	background-color: #000;
+	direction:ltr;
+	font-family: helivetica,arial;
+	font-size:19px;
+	font-size-adjust:none;
+	font-stretch:normal;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:bold;
+	color: #fff;
+	line-height:normal;
+	text-align: center;
+}
+body * {
+	line-height:1.22em;
+}
+a, img {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	text-decoration: none;
+	color: #fff;
+}
+#shareBtn {
+	display: block;
+	margin: 94px 0 30px 0;
+}
+#shareLoad {
+	display: none;
+	background-color: #000;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 2000;
+}
+#shareLoad p {
+	font-size: 22px;
+	text-align: center;
+	color: #fff;
+	margin-top: 120px;
+}
