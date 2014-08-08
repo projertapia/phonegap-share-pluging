@@ -2,8 +2,6 @@
 <html>
 	<head>
 		<title>Share Plugin Demo</title>
-
-		<script type="text/javascript" charset="utf-8" src="js/phonegap.0.9.5.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/share.js"></script>
 		<link rel="stylesheet" type="text/css" href="common.css">
@@ -21,12 +19,12 @@
     // Espera a que PhoneGap se inicie
     //
     document.addEventListener("deviceready", onDeviceReady, false);
-
+alert("device listo")
     // PhoneGap esta listo
     //
     function onDeviceReady() {
         var element = document.getElementById('deviceProperties');
-
+alert("function listo")
         element.innerHTML = 'Nombre del dispositivo: '  + device.name     + '<br />' + 
                             'Versión Phonegap: '       + device.phonegap + '<br />' + 
                             'Plataforma: '          + device.platform + '<br />' + 
