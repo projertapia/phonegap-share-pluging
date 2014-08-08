@@ -12,7 +12,7 @@
     <description>
         Shareapp 
     </description>
-
+	<access origin="*" />
     <author href="https://projerdesign.com" email="otapia@projerdesign.com">
         OTapia
     </author>
