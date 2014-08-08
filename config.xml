@@ -21,4 +21,5 @@
 	</feature>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<gap:platform name="android" />
+	<gap:plugin name="nl.x-services.plugins.socialsharing" />
 </widget>
