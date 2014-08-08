@@ -16,6 +16,9 @@
     <author href="https://projerdesign.com" email="otapia@projerdesign.com">
         OTapia
     </author>
-	
+	<feature name="SocialSharing">
+	  <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+	</feature>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<gap:platform name="android" />
 </widget>
