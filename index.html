@@ -2,10 +2,9 @@
 <html>
 	<head>
 		<title>Share Plugin Demo</title>
-		<script type="text/javascript" src="js/cordova.js"></script>
-		<script type="text/javascript" src="js/SocialSharing.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/share.js"></script>
+
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/SocialSharing.js"></script>
 		<link rel="stylesheet" type="text/css" href="common.css">
 	</head>
 
@@ -15,96 +14,11 @@
 <button onclick="window.plugins.socialsharing.share(null, null, null, 'http://www.x-services.nl')">link only</button>
 <button onclick="window.plugins.socialsharing.share('Message and link', null, null, 'http://www.x-services.nl')">message and link</button>
 <button onclick="window.plugins.socialsharing.share(null, null, 'https://www.google.nl/images/srpr/logo4w.png', null)">image only</button>
-// Beware: passing a base64 file as 'data:' is not supported on Android 2.x: https://code.google.com/p/android/issues/detail?id=7901#c43
-// Hint: when sharing a base64 encoded file on Android you can set the filename by passing it as the subject (second param)
+
 <button onclick="window.plugins.socialsharing.share(null, 'Android filename', 'data:image/png;base64,R0lGODlhDAAMALMBAP8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUKAAEALAAAAAAMAAwAQAQZMMhJK7iY4p3nlZ8XgmNlnibXdVqolmhcRQA7', null)">base64 image only</button>
-// Hint: you can share multiple files by using an array as thirds param: ['file 1','file 2', ..], but beware of this Android Kitkat Facebook issue: [#164]
+
 <button onclick="window.plugins.socialsharing.share('Message and image', null, 'https://www.google.nl/images/srpr/logo4w.png', null)">message and image</button>
 <button onclick="window.plugins.socialsharing.share('Message, image and link', null, 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl')">message, image and link</button>
 <button onclick="window.plugins.socialsharing.share('Message, subject, image and link', 'The subject', 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl')">message, subject, image and link</button>
-<p id="deviceProperties">Cargando atributos Device...</p>
-		<a href="#" id="shareBtn">Click to share</a>
-		<br/>
-	<img src="http://www.dineroenimagen.com/media/dinero/styles/gallerie/public/images/2014/07/estudiar-g.jpg?itok=sm1fV9Hr" id="img"/>
-<div id="shareLoad"><p>Loading...</p></div>
-
-<script type="text/javascript" charset="utf-8">
-
-    // Espera a que PhoneGap se inicie
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
-alert("device listo")
-    // PhoneGap esta listo
-    //
-    function onDeviceReady() {
-        var element = document.getElementById('deviceProperties');
-alert("function listo")
-        element.innerHTML = 'Nombre del dispositivo: '  + device.name     + '<br />' + 
-                            'Versión Phonegap: '       + device.phonegap + '<br />' + 
-                            'Plataforma: '          + device.platform + '<br />' + 
-                            'UUID: '            + device.uuid     + '<br />' + 
-                            'Versión: '            + device.version  + '<br />';
-    }
-
-</script>
-
-		
-<script type="text/javascript">
-
-// PhoneGap device.platform naming
-var ANDROID_PLATFORM = "Android";
-var IOS_PLATFORM = "iPhone";
-
-$(document).ready(function() {
-	var devicePlatform = "Android";
-	var deviceplatform = "Android";
-	$('#shareBtn').click(function(event) {
-		alert(devicePlatform)
-		event.preventDefault();
-
-		// * * * * * *
-		// Server Image Example
-		// * * * * * *
-		var shareSrc = $('#img').attr('src'); // get the absolute server path from the DOM
-		var mimeType = 'image/jpeg';
-		
-		// * * * * * *
-		// Local Image Example
-		// * * * * * *
-		//var shareSrc = '/mnt/sdcard/my_image.jpg';
-		//var mimeType = 'image/jpeg';
-		
-		// * * * * * *
-		// HTML Example
-		// * * * * * *
-		//var shareSrc = '<a href="http://www.google.com">Search the Internet</a>';
-		//var mimeType = 'text/html';
-		
-		// * * * * * *
-		// Plain Text Example
-		// * * * * * *
-		//var shareSrc = 'http://www.google.com'; // Facebook only allows URLs in plain text sharing
-		//var mimeType = 'text/plain';
-
-		if (deviceplatform == ANDROID_PLATFORM) {
-				$('#shareLoad').css('display', 'block');
-				window.plugins.share.send(shareSrc, mimeType, {success: success, fail: fail, title: 'Share With', subject: 'Share Plugin Demo'});
-				function success(result) {
-					$('#shareLoad').css('display', 'none');
-					if (result.result == 0)
-						alert(result.debug);
-				}
-				function fail(result) {
-					$('#shareLoad').css('display', 'none');
-					alert(result.debug);
-				}
-		} else {
-			// Do something else for iPhone/webOS users
-			// window.location = 'http://www.facebook.com/sharer.php?u=' + escape(shareSrc); // Facebook share URL
-		}
-	});
-
-});
-		</script>
 </body>
 </html>
